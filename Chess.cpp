@@ -27,104 +27,12 @@ int print_board(Piece grid[width][height])
   for(int i = 0; i < width; i++){
     cout << "\n"  << endl;
     for(int j = 0; j < height; j++){
-      cout << "|" << grid[j][i];      
+      cout << "|" << grid[j][i].type;      
       count++;
     }
   }
   cout << "\n\n\n\n"  << endl;
   return 1;
-}
-
-int print_board_with_position(Piece grid[width][height], int x, int y)
-{
-  int count = 0;
-  for(int i = 0; i < width; i++){
-    cout << "\n"  << endl;
-    for(int j = 0; j < height; j++){
-      if(x==j && y==i){
-        cout << "|" << grid[i][j];
-      }else{
-        cout << " " << grid[i][j];
-      }
-      
-      count++;
-    }
-  }
-  return 1;
-}
-
-bool complete(Piece grid[width][height])
-{
-  for(int i = 0; i < width; i++){
-    for(int j = 0; j < height; j++){
-      if(grid[i][j]==0){
-        cout << "\n Sudoku is not complete \n"  << endl;
-        return false;
-      }
-    }
-  }
-  cout << "\n Sudoku is complete  \n"  << endl;
-  print_board(grid);
-  return true;
-}
-
-
-bool check(Piece grid[width][height], int x, int y, int num)
-{
-  // check column
-  for(int m=0; m<width; m++){
-    if(grid[m][y]==num){
-      cout << "\n Return_#1 \n";
-      return false;
-    }
-  }
-  // check row
-  for(int n=0; n<height; n++){
-    if(grid[x][n]==num){
-      cout << "\n Return_#2 \n";
-      return false;
-    }
-  }
-  // check box
-  int x0 = x - (x%3);
-  int y0 = y - (y%3);
-  cout << "\n x0: " << x0 << endl;
-  cout << "\n y0: " << y0 << endl;
-  print_board_with_position(grid, x0, y0);
-  for(int l = 0; l < 3; l++){
-    for(int m = 0; m < 3; m++){
-        if(grid[x0+l][y0+m]==num){
-            cout << "\n Return_#3 \n";
-            return false;
-        }
-    }
-  }
-
-
-  return true;
-}
-
-std::tuple<int, int> find_random_empty_spot(Piece grid[width][height])
-{
-    int random_width = rand() % width;
-    int random_height = rand() % height;
-    while(grid[random_width][random_height] != 0){
-      random_width = rand() % width;
-      random_height = rand() % height;
-    }
-    return  {random_width, random_height};
-}
-
-std::tuple<int, int> find_empty_spot(Piece grid[width][height])
-{
-    for(int i = 0; i < width; i++){
-      for(int j = 0; j < height; j++){
-        if(grid[i][j]==0){
-          return  {i, j};
-        }
-      }
-    }
-    return  {-1, -1};
 }
 
 int calculate_pawn_score(Piece grid[width][height], int score, int j, int i){
@@ -374,35 +282,35 @@ bool init_grid(Piece grid[width][height])
     {
       for(int j = 0; j < width; j++)
       {
-         grid[i][j] = " ";
+         grid[i][j].type = " ";
       }
     }
     // Pawns
     for(int i = 0; i < width; i++)
     {
-      grid[i][1] = "p1";
-      grid[i][height-2] = "p2";
+      grid[i][1].type = "p";
+      grid[i][height-2].type = "p";
     }
 
     // Bishop
-    grid[2][0] = "b1";
-    grid[5][0] = "b1";
-    grid[2][height-1] = "b2";
-    grid[5][height-1] = "b2";
+    grid[2][0].type = "b";
+    grid[5][0].type = "b";
+    grid[2][height-1].type = "b";
+    grid[5][height-1].type = "b";
 
     // Knight
-    grid[1][0] = "k1";
-    grid[5][0] = "k1";
-    grid[2][height-1] = "k2";
-    grid[5][height-1] = "k2";
+    grid[1][0].type = "k";
+    grid[5][0].type = "k";
+    grid[2][height-1].type = "k";
+    grid[5][height-1].type = "k";
 
     // Queen
-    grid[3][0] = "q1";
-    grid[3][height-1] = "q2";
+    grid[3][0].type = "q";
+    grid[3][height-1].type = "q";
 
     // King
-    grid[4][0] = "K1";
-    grid[4][height-1] = "K2";
+    grid[4][0].type = "K";
+    grid[4][height-1].type = "K";
 
     return true;
 }
