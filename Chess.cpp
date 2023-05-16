@@ -140,31 +140,78 @@ int calculate_pawn_score(Piece grid[width][height], int score, int j, int i){
 
 int calculate_knight_score(Piece grid[width][height], int score, int j, int i){
   // Knight
-  if(grid[j+2][i+1].type=="b"){
+  if(grid[j+2][i+1].type!=" "){
     // Bishop are a score of 2
-    score += 2;
+    string t = grid[j+2][i+1].type;
+    if(t=="b")
+      score += 2;
+    if(t=="k")
+      score += 3;
+    if(t=="q")
+      score += 4;
+    if(t=="K")
+      score += 10;
   }
-  if(grid[j+1][i+2].type=="k"){
-    // Knight are a score of 3
-    score += 3;
+  if(grid[j+2][i-1].type!=" "){
+    // Bishop are a score of 2
+    string t = grid[j+1][i+2].type;
+    if(t=="b")
+      score += 2;
+    if(t=="k")
+      score += 3;
+    if(t=="q")
+      score += 4;
+    if(t=="K")
+      score += 10;
   }
-  if(grid[j-1][i+2].type=="q"){
-    // Queen are a score of 4
-    score += 4;
+  if(grid[j+1][i+2].type!=" "){
+    // Bishop are a score of 2
+    string t = grid[j-1][i+2].type;
+    if(t=="b")
+      score += 2;
+    if(t=="k")
+      score += 3;
+    if(t=="q")
+      score += 4;
+    if(t=="K")
+      score += 10;
   }
-  if(grid[j-2][i+1].type == 'K2'){
-    // Queen are a score of 5
-    score += 5;
+  if(grid[j+1][i-2].type!=" "){
+    // Bishop are a score of 2
+    string t = grid[j-2][i+1].type;
+    if(t=="b")
+      score += 2;
+    if(t=="k")
+      score += 3;
+    if(t=="q")
+      score += 4;
+    if(t=="K")
+      score += 10;
   }
-  if(grid[j-1][i-2].type == 'q2'){
-    // Queen are a score of 4
-    score += 4;
+  if(grid[j-2][i-1].type!=" "){
+    // Bishop are a score of 2
+    string t = grid[j-1][i+2].type;
+    if(t=="b")
+      score += 2;
+    if(t=="k")
+      score += 3;
+    if(t=="q")
+      score += 4;
+    if(t=="K")
+      score += 10;
   }
-  if(grid[j-2][i-1].type == 'K2'){
-    // Queen are a score of 5
-    score += 5;
+  if(grid[j-2][i-1].type!=" "){
+    // Bishop are a score of 2
+    string t = grid[j-2][i+1].type;
+    if(t=="b")
+      score += 2;
+    if(t=="k")
+      score += 3;
+    if(t=="q")
+      score += 4;
+    if(t=="K")
+      score += 10;
   }
-
 
   return score;
 }
@@ -177,19 +224,19 @@ int calculate_bishop_score(Piece grid[width][height], int score, int j, int i){
     while((l < height) && (m < width)){
       l++;
       m++;
-      if(grid[l][m] == 'b2'){
+      if(grid[l][m].type == "b"){
         // Bishop are a score of 2
         score += 2;
       }
-      if(grid[l][m] == 'k2'){
+      if(grid[l][m].type == "k"){
         // Knight are a score of 3
         score += 3;
       }
-      if(grid[l][m] == 'q2'){
+      if(grid[l][m].type == "q"){
         // Queen are a score of 4
         score += 4;
       }
-      if(grid[l][m] == 'K2'){
+      if(grid[l][m].type == "K"){
         // Queen are a score of 5
         score += 5;
       }
@@ -199,19 +246,19 @@ int calculate_bishop_score(Piece grid[width][height], int score, int j, int i){
     while((l < height) && (m < width)){
       l++;
       m--;
-      if(grid[l][m] == 'b2'){
+      if(grid[l][m].type == "b"){
         // Bishop are a score of 2
         score += 2;
       }
-      if(grid[l][m] == 'k2'){
+      if(grid[l][m].type == "k"){
         // Knight are a score of 3
         score += 3;
       }
-      if(grid[l][m] == 'q2'){
+      if(grid[l][m].type == "q"){
         // Queen are a score of 4
         score += 4;
       }
-      if(grid[l][m] == 'K2'){
+      if(grid[l][m].type == "K"){
         // Queen are a score of 5
         score += 5;
       }
@@ -221,19 +268,19 @@ int calculate_bishop_score(Piece grid[width][height], int score, int j, int i){
     while((l < height) && (m < width)){
       l--;
       m++;
-      if(grid[l][m] == 'b2'){
+      if(grid[l][m].type == "b"){
         // Bishop are a score of 2
         score += 2;
       }
-      if(grid[l][m] == 'k2'){
+      if(grid[l][m].type == "k"){
         // Knight are a score of 3
         score += 3;
       }
-      if(grid[l][m] == 'q2'){
+      if(grid[l][m].type == "q"){
         // Queen are a score of 4
         score += 4;
       }
-      if(grid[l][m] == 'K2'){
+      if(grid[l][m].type == "K"){
         // Queen are a score of 5
         score += 5;
       }
@@ -243,19 +290,19 @@ int calculate_bishop_score(Piece grid[width][height], int score, int j, int i){
     while((l < height) && (m < width)){
       l--;
       m--;
-      if(grid[l][m] == 'b2'){
+      if(grid[l][m].type == "b"){
         // Bishop are a score of 2
         score += 2;
       }
-      if(grid[l][m] == 'k2'){
+      if(grid[l][m].type == "k"){
         // Knight are a score of 3
         score += 3;
       }
-      if(grid[l][m] == 'q2'){
+      if(grid[l][m].type == "q"){
         // Queen are a score of 4
         score += 4;
       }
-      if(grid[l][m] == 'K2'){
+      if(grid[l][m].type == "K"){
         // Queen are a score of 5
         score += 5;
       }
@@ -270,17 +317,17 @@ int calculate_queen_score(Piece grid[width][height], int score, int j, int i){
   // Check the box
   for(int l = j-1; l <= j+1; l++){
     for(int m = i-1; m <= i+1; m++){
-      if(grid[l][m] != ' '){
-        if(grid[l][m] == 'b2'){
+      if(grid[l][m].type != " "){
+        if(grid[l][m].type == "b"){
           score += 2;
         }
-        if(grid[l][m] == 'k2'){
+        if(grid[l][m].type == "k"){
           score += 3;
         }
-        if(grid[l][m] == 'q2'){
+        if(grid[l][m].type == "q"){
           score += 4;
         }
-        if(grid[l][m] == 'K2'){
+        if(grid[l][m].type  == "K"){
           score += 5;
         }
       }
@@ -314,7 +361,7 @@ bool calculate_score_p1(Piece grid[width][height], int x, int y){
 }
 
 bool move_pawn(Piece grid[width][height], int x, int y){
-  if(grid[x][y]=='p'){
+  if(grid[x][y]=="p"){
     
   }
   return true;
@@ -327,35 +374,35 @@ bool init_grid(Piece grid[width][height])
     {
       for(int j = 0; j < width; j++)
       {
-         grid[i][j] = ' ';
+         grid[i][j] = " ";
       }
     }
     // Pawns
     for(int i = 0; i < width; i++)
     {
-      grid[i][1] = 'p1';
-      grid[i][height-2] = 'p2';
+      grid[i][1] = "p1";
+      grid[i][height-2] = "p2";
     }
 
     // Bishop
-    grid[2][0] = 'b1';
-    grid[5][0] = 'b1';
-    grid[2][height-1] = 'b2';
-    grid[5][height-1] = 'b2';
+    grid[2][0] = "b1";
+    grid[5][0] = "b1";
+    grid[2][height-1] = "b2";
+    grid[5][height-1] = "b2";
 
     // Knight
-    grid[1][0] = 'k1';
-    grid[5][0] = 'k1';
-    grid[2][height-1] = 'k2';
-    grid[5][height-1] = 'k2';
+    grid[1][0] = "k1";
+    grid[5][0] = "k1";
+    grid[2][height-1] = "k2";
+    grid[5][height-1] = "k2";
 
     // Queen
-    grid[3][0] = 'q1';
-    grid[3][height-1] = 'q2';
+    grid[3][0] = "q1";
+    grid[3][height-1] = "q2";
 
     // King
-    grid[4][0] = 'K1';
-    grid[4][height-1] = 'K2';
+    grid[4][0] = "K1";
+    grid[4][height-1] = "K2";
 
     return true;
 }
